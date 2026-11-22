@@ -237,16 +237,100 @@ footer {
 
     <div id="clock"></div>
 
-<script>
-function updateClock() {
-    document.getElementById("clock").textContent =
-        new Date().toLocaleTimeString();
+</section>
+
+<div class="horizontal-calendar">
+    <span>📅</span>
+    <span id="cal-day"></span>
+    <span class="cal-divider">|</span>
+    <span id="cal-date"></span>
+    <span id="cal-month"></span>
+    <span class="cal-spacer"></span>
+    <span id="cal-time"></span>
+</div>
+
+<style>
+.horizontal-calendar {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 7px 12px;
+
+    /* Transparent background */
+    background: transparent;
+
+    color: inherit;
+    font-family: inherit;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(128,128,128,0.25);
 }
 
-setInterval(updateClock, 1000);
-updateClock();
-</script>
+#cal-day {
+    font-weight: 600;
+}
 
+#cal-date {
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+#cal-month {
+    opacity: 0.8;
+}
+
+.cal-divider {
+    opacity: 0.4;
+}
+
+.cal-spacer {
+    flex: 1;
+}
+
+#cal-time {
+    font-size: 12px;
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+@media(max-width: 400px) {
+    .horizontal-calendar {
+        gap: 5px;
+        font-size: 11px;
+        padding: 6px;
+    }
+}
+</style>
+
+<script>
+function updateCal() {
+    const now = new Date();
+
+    document.getElementById("cal-day").textContent =
+        now.toLocaleDateString("en-IN", {weekday:"short"});
+
+    document.getElementById("cal-date").textContent =
+        now.getDate();
+
+    document.getElementById("cal-month").textContent =
+        now.toLocaleDateString("en-IN", {
+            month:"short",
+            year:"numeric"
+        });
+
+    document.getElementById("cal-time").textContent =
+        now.toLocaleTimeString("en-IN", {
+            hour:"2-digit",
+            minute:"2-digit",
+            second:"2-digit"
+        });
+}
+
+updateCal();
+setInterval(updateCal, 1000);
+</script>
 <section >
   <p>Thank you for visiting my website!</p>
 
