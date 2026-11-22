@@ -11,27 +11,12 @@
     <!DOCTYPE html>
 <html>
 <head>
-<style>
-.blinking-text {
-    color: green !important;
-    font-size: 22px;
-    font-weight: bold;
-    animation: blinking 1s linear infinite;
-}
 
-@keyframes blinking {
-    0%   { opacity: 1; }
-    50%  { opacity: 0; }
-    100% { opacity: 1; }
-}
-</style>
+  
 </head>
 
 <body>
 
-<p class="blinking-text">
-    Looking for Research Collaboration!
-</p>
 
 </body>
 </html>
@@ -163,7 +148,24 @@ footer {
 
 <main>
 
+<style>
+.blinking-text {
+    color: green;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    animation: blink 1s infinite;
+}
 
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+</style>
+
+<p class="blinking-text">
+    ● Looking for Collaboration!
+</p>
 
 <section id="about">
     <h2><em>About Me </em></h2>
